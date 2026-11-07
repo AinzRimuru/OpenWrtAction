@@ -168,4 +168,13 @@ chmod +x files/etc/uci-defaults/99-custom-ssh-config
 #------------------------------------------------end 修改脚本-------------------------------------------------------
 
 
+
+# --- [esxi-build] copy ESXi auto-provisioning overlay into files/ ---
+mkdir -p files/etc/uci-defaults
+cp -a $PATCHES_SRC_DIR/diy_script/immortalwrt_diy/files-overlay/. ./files/
+chmod +x ./files/etc/uci-defaults/* 2>/dev/null
+echo "[esxi-build] overlay copied:"
+ls -la ./files/etc/uci-defaults/
+# --- end [esxi-build] ---
+
 echo "DIY2 is complate!"

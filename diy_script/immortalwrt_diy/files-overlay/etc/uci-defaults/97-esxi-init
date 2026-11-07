@@ -1,0 +1,54 @@
+#!/bin/sh
+# [esxi-build] Auto-provisioning for the ESXi OpenWrt VM (first boot, runs before network starts)
+# WAN  = eth0 (VM Network, bridged to cloud /24, DHCP)
+# LAN  = eth1 (internal vSwitch "LAN", 192.168.100.1/24, DHCP server stays on)
+uci -q batch <<'UCI'
+delete network.wan
+delete network.wan6
+delete network.lan
+set network.wan=interface
+set network.wan.device='eth0'
+set network.wan.proto='dhcp'
+set network.wan6=interface
+set network.wan6.device='eth0'
+set network.wan6.proto='dhcpv6'
+set network.lan=interface
+set network.lan.device='eth1'
+set network.lan.proto='static'
+add_list network.lan.ipaddr='192.168.100.1/24'
+set network.lan.ip6assign='64'
+commit network
+UCI
+
+# release eth0 from br-lan (default bridge) so WAN can bind it
+while uci -q get network.@device[0] >/dev/null; do
+	uci -q delete network.@device[0]
+done
+uci commit network
+
+# dropbear must listen on all interfaces (default restricts to lan)
+uci -q delete dropbear.@dropbear[0].Interface
+uci commit dropbear
+
+# firewall: allow SSH(22/2222) LuCI(80/443) from WAN
+for port in 22 80 443 2222; do
+	name=$(echo "wansvc$port")
+	uci add firewall rule >/dev/null
+	uci set firewall.@rule[-1].name="$name"
+	uci set firewall.@rule[-1].src='wan'
+	uci set firewall.@rule[-1].proto='tcp'
+	uci set firewall.@rule[-1].dest_port="$port"
+	uci set firewall.@rule[-1].target='ACCEPT'
+done
+uci commit firewall
+
+# timezone + hostname
+uci set system.@system[0].timezone='CST-8'
+uci set system.@system[0].zonename='Asia/Shanghai'
+uci set system.@system[0].hostname='OpenWrt-ESXi'
+uci commit system
+
+# root password (hash of esxi-123456; change after first login if this repo is public!)
+sed -i 's|^root:[^:]*:|root:$6$5AXP3OKQwsJCrGVl$fRYYYnts.6LGzAucPLtdd3i/iIKmcA5offRXg37WE4WDBk0Q4LcYXHkTtH9XnaiZLGRyVrZRIUSr9W4MtMZD31:|' /etc/shadow
+
+exit 0

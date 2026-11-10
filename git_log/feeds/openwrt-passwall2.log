@@ -1,11 +1,11 @@
 <details> <summary> <b>openwrt-passwall2 new commit log :rocket: </b> </summary>
 
-#### [:mega: Full Changelog. ](https://github.com/Openwrt-Passwall/openwrt-passwall2/compare/c5894c4e0b5c984d6eabccbd009ebfcd78d1d621...edef18ec550432b446423a6b61f5a086062e9bdc)  
+#### [:mega: Full Changelog. ](https://github.com/Openwrt-Passwall/openwrt-passwall2/compare/edef18ec550432b446423a6b61f5a086062e9bdc...805b21d01092644984726d8c122f2f17179efdef)  
 :heavy_exclamation_mark: The list displays only the latest 15 commit logs.  
 
 SHA|Author|Date|Message
 -|-|-|-
-edef18e|A-BO|Sat Nov 7 01:24:58 2026 +0800|luci: fix share link host parsing and default ports
-4a7ecc1|A-BO|Fri Nov 6 23:59:56 2026 +0800|luci: fix double URL decoding of Shadowsocks passwords
-2c58e9a|A-BO|Fri Nov 6 23:17:41 2026 +0800|luci: fix Naive share link userinfo parsing
+805b21d|A-BO|Tue Nov 10 16:59:29 2026 +0800|luci: optimize
+0d5a169|A-BO|Sun Nov 8 13:53:54 2026 +0800|luci: fix component update button clipping across themes
+7d6b5bc|A-BO|Sat Nov 7 15:58:50 2026 +0800|luci: sync Clash subscription conversion from PassWall
 </details>

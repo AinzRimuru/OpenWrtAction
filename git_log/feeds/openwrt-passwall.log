@@ -1,11 +1,15 @@
 <details> <summary> <b>openwrt-passwall new commit log :rocket: </b> </summary>
 
-#### [:mega: Full Changelog. ](https://github.com/Openwrt-Passwall/openwrt-passwall/compare/9815bf90e9213d872845a19b5922547ee3d80d89...edf166fb1785ca02a83632c65a6d78250407e83c)  
+#### [:mega: Full Changelog. ](https://github.com/Openwrt-Passwall/openwrt-passwall/compare/edf166fb1785ca02a83632c65a6d78250407e83c...f42a7b492ab5a6973bd93148a04a9bb83717f249)  
 :heavy_exclamation_mark: The list displays only the latest 15 commit logs.  
 
 SHA|Author|Date|Message
 -|-|-|-
-edf166fb|A-BO|Sat Nov 7 01:16:13 2026 +0800|luci: fix share link host parsing and default ports
-c55e859c|A-BO|Fri Nov 6 23:56:12 2026 +0800|luci: fix double URL decoding of Shadowsocks passwords
-d9d30a11|A-BO|Fri Nov 6 23:15:04 2026 +0800|luci: fix Naive share link userinfo parsing
+f42a7b49|A-BO|Tue Nov 10 19:34:20 2026 +0800|luci: keep the ws path query when removing ed for sing-box
+9dc6e048|A-BO|Tue Nov 10 16:57:31 2026 +0800|luci: optimize
+33ebdb39|A-BO|Tue Nov 10 00:59:30 2026 +0800|luci: clean up shunt sets on service stop
+4c542220|A-BO|Mon Nov 9 23:48:41 2026 +0800|luci: disable auto-merge for dynamic nftsets
+e7f0ed63|A-BO|Mon Nov 9 23:21:21 2026 +0800|luci: move ISP DNS addresses to VPS bypass sets
+f19da543|A-BO|Sun Nov 8 13:55:52 2026 +0800|luci: fix component update button clipping across themes
+82678e8e|A-BO|Sat Nov 7 15:22:53 2026 +0800|luci: add optional node DNS extraction from Clash subscriptions
 </details>
